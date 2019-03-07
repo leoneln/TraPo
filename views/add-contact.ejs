@@ -1,0 +1,53 @@
+<% include partials/header.ejs %>
+<div class="container-fluid">
+    <% if (message) { %>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h3 class="h3 mb-2 text-gray-800"><%= message %></h3>
+                <p class="lead">Fill out all required (<span class="text-danger">*</span>) information</p>
+            </div>
+        </div>
+    <% } %>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <form method="post" action="/addContact" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="primary">Primary Contact <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="primcontact" id="primary" placeholder="555-555-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="carrier">Primary Contact Carrier <span class="text-danger">*</span></label>
+                        <select id="carrier" name="primcarrier" class="form-control" required>
+                            <option selected>Select One</option>
+                            <option>BoostMobile</option>
+                            <option>T-Mobile</option>
+                            <option>At&t</option>
+                            <option>Sprint</option>
+                            <option>Metro</option>
+                            <option>Verizon</option>
+                            <option>Cricket</option>
+                            <option>Not Applicable</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="econtact">Emergency Contact</label>
+                        <input type="text" class="form-control" name="emercontact" id="econtact" placeholder="555-555-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="email@domain.com">
+                    </div>
+                </div>
+                <!--added by needs to changed to identify loged in user-->
+                <input type="hidden" name="addedby" value="<%= idLoggedIn %>">
+                <input type="hidden" name="personid" value="<%= personid %>">
+                <input type="hidden" name="personname" value="<%= personname %>">
+                <button type="submit" class="btn btn-success float-right">Next: Address Information</button>
+            </form>
+        </div>
+    </div>
+</div>
+<% include partials/footer.ejs %>

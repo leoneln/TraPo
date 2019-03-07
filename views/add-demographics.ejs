@@ -1,0 +1,148 @@
+<% include partials/header.ejs %>
+<script language="JavaScript" type="text/javascript">
+    window.onload = function() {
+        AC.init("origincountry");
+    }
+</script>
+<div class="container-fluid">
+    <% if (message) { %>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h3 class="h3 mb-2 text-gray-800"><%= message %></h3>
+            <p class="lead">Fill out all required (<span class="text-danger">*</span>) information</p>
+        </div>
+    </div>
+    <% } %>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <form method="post" action="/addDemographics" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="origincoutry">Country of Origin <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="origincountry" name="origincountry" required>
+                        <p class="text-info" id="helper"></p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="languagehome">Language Spoken at Home <span class="text-danger">*</span></label>
+                        <select id="languagehome" name="languagehome" class="form-control" required>
+                            <option selected>Select One</option>
+                            <option>English</option>
+                            <option>Spanish</option>
+                            <option>Other</option>
+                            <option>Multiple Languages</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="engproficiency">English Profieciency <span class="text-danger">*</span></label>
+                        <select id="engproficiency" name="engproficiency" class="form-control" required>
+                            <option selected>Select One</option>
+                            <option>Beginner</option>
+                            <option>Elementary</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                            <option>Proficient</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lenusresidence">Lenght of US Residence (round years)</label>
+                        <input type="number" id="lenusresidence" name="lenusresidence" class="form-control">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="employed">Employment Status <span class="text-danger">*</span></label>
+                        <select id="employed" name="employed" class="form-control" required>
+                            <option selected>Select One</option>
+                            <option value="Y">Employed</option>
+                            <option value="U">Unemployed</option>
+                            <option value="N">Not Applicable</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="emptype">Employment Type <span class="text-danger">*</span></label>
+                        <select id="emptype" name="emptype" class="form-control" required>
+                            <option selected>Select One</option>
+                            <option>Full-Time</option>
+                            <option>Part-Time</option>
+                            <option>Seasonal</option>
+                            <option>Not Applicable</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="empsector">Employment Status <span class="text-danger">*</span></label>
+                        <select id="empsector" name="empsector" class="form-control" required>
+                            <option selected>Select One</option>
+                            <option>Construction</option>
+                            <option>Manufacturing</option>
+                            <option>Retail</option>
+                            <option>Agriculture</option>
+                            <option>Education</option>
+                            <option>Leisure and Hospitality</option>
+                            <option>Health and Social</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="hhsize">Household Size <span class="text-danger">*</span></label>
+                        <input type="number" id="hhsize" name="hhsize" class="form-control" min="0" max="20" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="dependants">Number of Dependants<span class="text-danger">*</span></label>
+                        <input type="number" id="dependants" name="dependants" class="form-control" min="0" max="20" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="maritalstatus">Marital Status <span class="text-danger">*</span></label>
+                        <select id="maritalstatus" name="maritalstatus" class="form-control" required>
+                            <option selected>Select One</option>
+                            <option>Married</option>
+                            <option>Partnered</option>
+                            <option>Divorced or Separated</option>
+                            <option>Never Married</option>
+                            <option>Widowed</option>
+                            <option>Not Applicable</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="hhincome">Annual Household Income <span class="text-danger">*</span></label>
+                        <select id="hhincome" name="hhincome" class="form-control" required>
+                            <option selected>Select One</option>
+                            <option>$00,000 - $09,999</option>
+                            <option>$10,000 - $19,999</option>
+                            <option>$20,000 - $29,999</option>
+                            <option>$30,000 - $39,999</option>
+                            <option>$40,000 - $49,999</option>
+                            <option>$50,000 - $59,999</option>
+                            <option>$60,000 - $69,999</option>
+                            <option>$70,000 - $99,99+</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="ethnicity">Ethnicity <span class="text-danger">*</span></label>
+                        <select id="ethnicity" name="ethnicity" class="form-control" required>
+                            <option selected>Select One</option>
+                            <option>Hispanic or Latino</option>
+                            <option>Native American</option>
+                            <option>Asian</option>
+                            <option>African American</option>
+                            <option>Pacific Islander</option>
+                            <option>White</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="hidden" name="addedby" value="<%= idLoggedIn %>>
+                <input type="hidden" name="personid" value="<%= personid %>">
+                <input type="hidden" name="personname" value="<%= personname %>">
+                <button type="submit" class="btn btn-success float-right">Finish</button>
+            </form>
+        </div>
+    </div>
+</div>
+<% include partials/footer.ejs %>

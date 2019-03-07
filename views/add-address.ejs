@@ -1,0 +1,66 @@
+<% include partials/header.ejs %>
+<div class="container-fluid">
+    <% if (message) { %>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h3 class="h3 mb-2 text-gray-800"><%= message %></h3>
+                <p class="lead">Fill out all required (<span class="text-danger">*</span>) information</p>
+            </div>
+        </div>
+    <% } %>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <form method="post" action="/addAddress" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="address1">Address Line 1 <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="address1" id="address1" placeholder="123 Street" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="address2">Address Line 2</label>
+                        <input type="text" class="form-control" name="address2" id="address2" placeholder="Appt 123">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="duelingtype">Address Type <span class="text-danger">*</span></label>
+                        <select id="duelingtype" name="duelingtype" class="form-control" required>
+                            <option>Home</option>
+                            <option>Townhome</option>
+                            <option>Appartment</option>
+                            <option>Temporary Housing</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="owned">Ownership <span class="text-danger">*</span></label>
+                        <select id="owned" name="owned" class="form-control" required>
+                            <option value="Y">Owned</option>
+                            <option value="N">Rent</option>
+                            <option value="NA">Not Applicable</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="city">City <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="city" id="city" placeholder="Some City" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="zip">Zipcode <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="zip" id="zip" placeholder="12345" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="state">Ownership <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="state" id="state" placeholder="UT" title="UT" minlength="2" maxlength="2" required>
+                        </div>
+                    </div>
+                <!--added by needs to changed to identify loged in user-->
+                <input type="hidden" name="addedby" value="1">
+                <input type="hidden" name="personid" value="<%= personid %>">
+                <input type="hidden" name="personname" value="<%= personname %>">
+                <button type="submit" class="btn btn-success float-right">Next: Demographic information</button>
+            </form>
+        </div>
+    </div>
+</div>
+<% include partials/footer.ejs %>

@@ -1,0 +1,58 @@
+<% include partials/header.ejs %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <% if (message) { %>
+                <p class="text-center text-danger"><%= message %></p>
+            <% } %>
+            <% if (person) { %>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" name="firstname" id="first_name" value="<%= person.firstname %>" required>
+                            <div class="valid-feedback">
+                                <p>Looks Good!</p>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" name="lastname" id="last_name" value="<%= person.lastname %>" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" class="form-control" name="dob" id="dob" value="<%= person.dob %>" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" class="form-control" required>
+                                <option selected><%= person.gender %></option>
+                                <option>Female</option>
+                                <option>Male</option>
+                                <option>Non-binary</option>
+                                <option>Prefer not to Say</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="addedby">Added By</label>
+                            <input type="text" class="form-control"  id="addedby" value="<%= person.addedby %>" readonly>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="dateadded">Last Name</label>
+                            <input type="text" class="form-control" id="dateadded" value="<%= person.dateadded %>" readonly>
+                        </div>
+                    </div>
+                    <input type="hidden" name="personid" id="personid" value="<%= person.personid %>">
+                    <button type="submit" class="btn btn-success float-right">Update Person</button>
+                </form>
+            <% } else { %>
+                <p class="text-center">Person Not Found. Go <a href="/add">here</a> to add person as new.</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+<% include partials/footer.ejs %>

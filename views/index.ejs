@@ -1,0 +1,87 @@
+<% include partials/header.ejs %>
+<div class="container-fluid">
+    <!--Page Heading-->
+    <div class="row">
+        <div class="col-12">
+            <h1 class="h3 mb-2 text-gray-800">Welcome to <span class="text-danger">Tra</span>cking <span class="text-danger">P</span>eople and <span class="text-danger">O</span>utcomes</h1>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Landing Page Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary mb-1">TraPO People</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">21</div>
+                    <div class="pt-3"><a class="btn btn-sm btn-dark" href="/personList">Person List</a></div>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-users fa-3x"></i>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success mb-1">Sign in Sheet</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">215</div>
+                    <div class="pt-3"><a class="btn btn-sm btn-dark" href="/addPerson">Review</a></div>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-clipboard-list fa-3x"></i>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning mb-1">Add Person</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="pt-3"><a class="btn btn-sm btn-dark" href="/addPerson">Test</a></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-3x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info mb-1">Database Quality</div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">80%</div>
+                            </div>
+                            <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-3"><a class="btn btn-sm btn-dark" href="/addPerson">Review</a></div>
+                    </div>
+                    <div class="col-auto">
+                    <i class="fas fa-database fa-3x"></i>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<% include partials/footer.ejs %>

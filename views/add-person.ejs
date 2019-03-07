@@ -1,0 +1,72 @@
+<% include partials/header.ejs %>
+<% if (message) { %>
+    <script>
+    $(document).ready(function(){
+            $("#duplicateModal").modal('show');
+        });
+    </script>
+<% } %>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <h1 class="h3 mb-2 text-gray-800">To add new person fill out all required (<span class="text-danger">*</span>) information</h1>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="first_name">First Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First Name" required>
+                        <div class="valid-feedback">
+                            <p>Looks Good!</p>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="last_name">Last Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="dob">Date of Birth <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" name="dob" id="dob" placeholder="mm/dd/yyyy" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="gender">Gender <span class="text-danger">*</span></label>
+                        <select id="gender" name="gender" class="form-control" required>
+                            <option>Female</option>
+                            <option>Male</option>
+                            <option>Non-binary</option>
+                            <option>Prefer not to Say</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="hidden" name="addedby" value="<%= idLoggedIn %>">
+                <input type="hidden" name="validated" value="0">
+                <button type="submit" class="btn btn-success float-right">Next: Contact Information</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Modal for messages-->
+<div class="modal fade" id="duplicateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p><%= message %></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
+<% include partials/footer.ejs %>

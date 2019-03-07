@@ -1,0 +1,97 @@
+<% include partials/header.ejs %>
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Potential Duplicates Found <i class="fas fa-exclamation-circle text-danger"></i></h1>
+    <p class="mb-4">Adding duplicates to the database causes data quality issues. Please take alook at the list below and ensure that the new person being added is not a duplicate.</p>
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Dupliates Found</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                    <% if (result.length > 0) {%>
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Date of Birth</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% result.forEach((res, index) => { %>
+                                    <tr>
+                                        <td><%= res.firstname %></td>
+                                        <td><%= res.lastname %></td>
+                                        <td><%= res.birthDate %></td>
+                                        <td><%= res.gender %></td>
+                                        <td>
+                                            <a href="/edit/<%= res.personid %>" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    <% } %>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="lead">Would like to proceed with adding as new? <button class="btn btn-sm btn-primary" id="confirm" data-toggle="modal" data-target="#addDuplicateModal">Yes</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal to add new person-->
+<div class="modal fade" id="addDuplicateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Person</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="first_name">First Name  span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="firstname" id="firstname" value="<%= newPerson[0] %>" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="last_name">Last Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="lastname" id="lastname" value="<%= newPerson[1] %>" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="dob">Date of Birth <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" name="dob" id="dob" value="<%= newPerson[2] %>" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="gender">Gender <span class="text-danger">*</span></label>
+                        <select id="gender" name="gender" class="form-control" required>
+                            <option selected><%= newPerson[3] %></option>
+                            <option>Female</option>
+                            <option>Male</option>
+                            <option>Non-binary</option>
+                            <option>Prefer not to Say</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="hidden" name="addedby" value="<%= newPerson[4] %>">
+                <input type="hidden" name="validated" value="1">
+                <p class="lead" id="confirmTrue">Are you sure? <button type="submit" class="btn btn-success">Next: Contact Information</button></p>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+        </div>
+    </div>
+</div>
+<% include partials/footer.ejs %>
